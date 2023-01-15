@@ -5,7 +5,7 @@ import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <>
       <Head>
@@ -21,18 +21,13 @@ export default function Home() {
         <a href="./events/">Events</a>
       </header>
       <main className={styles.main}>
-        <a href="./events/events-in-london">
-          <h2>Events in London</h2>
-          <p>Labore amet do exercitation aliqua id voluptate eiusmod duis qui. Veniam ut velit deserunt laboris ut. Excepteur incididunt id duis labore ad cupidatat ea proident ut eiusmod. Culpa eu Lorem qui ad excepteur aute amet dolor fugiat ipsum consectetur irure. Velit pariatur ex laboris excepteur commodo et. Enim esse ex officia elit culpa aliqua proident ipsum culpa id anim cillum.</p>
-        </a>
-        <a href='events/events-in-barcelona/'>
-          <h2>Events in Barcelona</h2>
-          <p>Labore amet do exercitation aliqua id voluptate eiusmod duis qui. Veniam ut velit deserunt laboris ut. Excepteur incididunt id duis labore ad cupidatat ea proident ut eiusmod. Culpa eu Lorem qui ad excepteur aute amet dolor fugiat ipsum consectetur irure. Velit pariatur ex laboris excepteur commodo et. Enim esse ex officia elit culpa aliqua proident ipsum culpa id anim cillum.</p>
-        </a>
-        <a href='events/events-in-san-fransisco/'>
-          <h2>Events in San Fransisco</h2>
-          <p>Labore amet do exercitation aliqua id voluptate eiusmod duis qui. Veniam ut velit deserunt laboris ut. Excepteur incididunt id duis labore ad cupidatat ea proident ut eiusmod. Culpa eu Lorem qui ad excepteur aute amet dolor fugiat ipsum consectetur irure. Velit pariatur ex laboris excepteur commodo et. Enim esse ex officia elit culpa aliqua proident ipsum culpa id anim cillum.</p>
-        </a>
+        {
+          data.map(ev => (<a key={ev.id} href={`./events/${ev.id}`}>
+            <Image src={ev.image} height={200} width={200} />
+            <h2>{ev.title}</h2>
+            <p>{ev.description}</p>
+          </a>))
+        }
 
 
       </main>
@@ -41,4 +36,14 @@ export default function Home() {
       </footer>
     </>
   )
+}
+
+export async function getServerSideProps() {
+  const { events_categories } = await import("../data/data.json");
+
+  return {
+    props: {
+      data: events_categories
+    }
+  }
 }
