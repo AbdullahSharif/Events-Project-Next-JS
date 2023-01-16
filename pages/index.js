@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
-import Link from 'next/link'
+
+import HomePage from "../src/components/home/home-page.jsx";
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,31 +15,11 @@ export default function Home({ data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header>
-        <Image src="" alt="" className='logo' />
-        <Link href="/" passHref>Home</Link>
-        <Link href="./about-us" passHref>About US</Link>
-        <Link href="./events/" passHref>Events</Link>
 
-      </header>
-      <main className={styles.main}>
-        {
-          data.map(ev => (
-            <Link key={ev.id} href={`./events/${ev.id}`} passHref>
-
-              <Image src={ev.image} height={200} width={200} alt={ev.title} />
-              <h2>{ev.title}</h2>
-              <p>{ev.description}</p>
-
-            </Link>
-          ))
-        }
+      <HomePage data={data} />
 
 
-      </main>
-      <footer>
-        &copy; copyright Sheikh Abdullah Sharif - 2023
-      </footer>
+
     </>
   )
 }

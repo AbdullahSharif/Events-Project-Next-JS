@@ -7,11 +7,14 @@ const Page = ({ data, pageName }) => {
             <h1>Events in {pageName}</h1>
             {
                 data.map(ev => (
-                    <Link key={ev.id} href={`/events/${ev.city}/${ev.id}`} passHref>
+                    <Link key={ev.id} href={`/events/${ev.city}/${ev.id}`} passHref className="events-page-event">
 
                         <Image src={ev.image} height={200} width={300} alt={ev.title} />
-                        <h2>{ev.title}</h2>
-                        <p>{ev.description}</p>
+                        <div>
+                            <h2>{ev.title}</h2>
+                            <p>{ev.description}</p>
+                        </div>
+
 
                     </Link>
                 ))

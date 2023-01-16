@@ -1,9 +1,9 @@
 import Image from "next/image";
 const Page = ({ data }) => {
     return (
-        <div style={{ color: "white" }}>
+        <div className="event">
             <h1>{data.title}</h1>
-            <Image src={data.image} alt={data.title} width={300} height={300} />
+            <Image src={data.image} alt={data.title} width={1000} height={500} />
             <p>{data.description}</p>
 
 
@@ -34,7 +34,7 @@ export async function getStaticProps(context) {
 
     const { allEvents } = await import("../../../data/data.json");
     const data = allEvents.find(ev => ev.id == context.params.id);
-    console.log(data);
+
     return {
         props: {
             data
