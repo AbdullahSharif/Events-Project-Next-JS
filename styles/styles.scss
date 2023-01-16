@@ -110,3 +110,37 @@ footer{
 
     }
 }
+.register-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    label{
+        font-weight: bolder;
+        font-size: 1.5rem;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    input{
+        width: 20%;
+        font-size: 1.2rem;
+        border: 1px solid rgb(111, 177, 12);
+        border-radius: 1rem;
+        padding: 0.4rem;
+        
+    }
+    button{
+        font-size: 1.4rem;
+        padding: 0.5rem;
+        border: 1px solid rgb(111, 177, 12);
+        border-radius: 0.5rem;
+        background-color: rgb(134, 222, 134);
+        cursor: pointer;
+        transition: background-color 0.3s;
+        &:hover{
+            background-color: rgb(21, 162, 21) ;
+            color: white;
+        }
+    }
+    margin-bottom: 2rem;
+}
